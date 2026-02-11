@@ -1,0 +1,24 @@
+#### Paso 7: Crear archivo de info personal (OPCIONAL - 5 min)
+
+Crea `data/info.txt`:
+```
+INFORMACIÓN PERSONAL - TC2004B
+
+Nombre: Luis Benvenuto
+Matrícula: A01286400
+Carrera: Ingeniería en Ciencia de Datos y Matemáticas
+Semestre: 4to
+
+¿Por qué tomé este curso?
+Para entender y explorar la parte de análisis de datos aplicado a problemas reales.
+
+¿Qué espero aprender?
+Aprender a limpiar, explorar y comunicar hallazgos con datos.
+
+Herramientas que ya conozco:
+- Python
+- Excel
+
+Herramientas nuevas para mí:
+- SQL
+- notebooks
