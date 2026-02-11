@@ -10,11 +10,11 @@ Repositorio personal para el curso TC2004B. Contiene notebooks y proyectos del s
 
 ## Estructura
 
-TC2004B-TuNombre/
-├── README.md
-├── .gitignore
-├── notebooks/      # Jupyter Notebooks
-└── data/          # Datasets (cuando aplique)
+TC2004B-Luis\
+├── README.md\
+├── .gitignore\
+├── notebooks/     # Jupyter Notebooks \
+└── data/         # Datasets (cuando aplique) 
 
 ## Contenido por Semana
 
