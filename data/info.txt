@@ -1,7 +1,3 @@
-#### Paso 7: Crear archivo de info personal (OPCIONAL - 5 min)
-
-Crea `data/info.txt`:
-```
 INFORMACIÓN PERSONAL - TC2004B
 
 Nombre: Luis Benvenuto
