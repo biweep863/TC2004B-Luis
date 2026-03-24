@@ -1,0 +1,105 @@
+Entrega: Análisis de texto con Línea de Comandos
+
+1) Comandos utilizados
+
+# Limpieza (Gutenberg)
+sed -n '/\*\*\* START OF/,/\*\*\* END OF/p' data/s1/e5/don_quijote.txt | sed '1d;$d' > data/s1/e5/don_quijote_limpio.txt
+sed -n '/\*\*\* START OF/,/\*\*\* END OF/p' data/s1/e5/moby_dick.txt | sed '1d;$d' > data/s1/e5/moby_dick_limpio.txt
+
+# Estadísticas básicas
+awk '{total+=NF} END {print total}' data/s1/e5/don_quijote_limpio.txt
+awk '{sum+=NF; n++} END {print sum/n}' data/s1/e5/don_quijote_limpio.txt
+awk 'NR==1 {min=max=NF} {if(NF<min)min=NF; if(NF>max)max=NF; sum+=NF; n++} END {print "min",min,"max",max,"avg",sum/n}' data/s1/e5/don_quijote_limpio.txt
+
+awk '{total+=NF} END {print total}' data/s1/e5/moby_dick_limpio.txt
+awk '{sum+=NF; n++} END {print sum/n}' data/s1/e5/moby_dick_limpio.txt
+awk 'NR==1 {min=max=NF} {if(NF<min)min=NF; if(NF>max)max=NF; sum+=NF; n++} END {print "min",min,"max",max,"avg",sum/n}' data/s1/e5/moby_dick_limpio.txt
+
+# Frecuencias (Top 20)
+tr '[:upper:]' '[:lower:]' < data/s1/e5/don_quijote_limpio.txt \
+  | tr -cs '[:alpha:]' '\n' \
+  | sort \
+  | uniq -c \
+  | sort -rn \
+  | head -20
+
+tr '[:upper:]' '[:lower:]' < data/s1/e5/moby_dick_limpio.txt \
+  | tr -cs '[:alpha:]' '\n' \
+  | sort \
+  | uniq -c \
+  | sort -rn \
+  | head -20
+
+
+2) Estadísticas del texto
+
+Don Quijote (procesado)
+- Total de palabras: 386614
+- Promedio de palabras por línea: 10,2602
+- Min/Max palabras por línea: min 0, max 20, avg 10,2602
+
+Moby Dick (procesado)
+- Total de palabras: 212796
+- Promedio de palabras por línea: 9,70077
+- Min/Max palabras por línea: min 0, max 19, avg 9,70077
+
+
+
+3) Top 20 palabras más frecuentes
+
+Don Quijote:
+20769 que
+18410 de
+18272 y
+10492 la
+9876 a
+8285 en
+8265 el
+6346 no
+4769 los
+4752 se
+4275 con
+3945 por
+3492 lo
+3486 las
+3420 le
+3388 su
+2714 don
+2536 del
+2345 me
+2270 como
+
+Moby Dick:
+14535 the
+6624 of
+6447 and
+4747 a
+4627 to
+4184 in
+3085 that
+2532 his
+2522 it
+2127 i
+1897 he
+1818 but
+1812 s
+1742 as
+1725 is
+1723 with
+1645 was
+1618 for
+1527 all
+1396 this
+
+
+4) Reflexión crítica
+
+Insights:
+- Las palabras más frecuentes son stopwords (“de”, “la”, “the”, “and”), por lo que el top 20 refleja estructura gramatical más que contenido temático.
+- Don Quijote muestra términos propios del contexto (“don”), mientras Moby Dick tiene pronombres en inglés (“he”, “his”) dominando el conteo.
+
+Limitaciones:
+- No hay contexto semántico: no se distinguen significados diferentes de la misma palabra.
+- La puntuación y el tokenizado simple pueden distorsionar términos (por ejemplo “s” en Moby Dick).
+- El análisis de frecuencia es poco informativo para temas.
+- No captura frases, entidades ni relaciones; sólo cuenta tokens aislados.
